@@ -1,0 +1,708 @@
+{
+	"info": {
+		"_postman_id": "3b6a5e9d-7f3f-44e6-af37-08b9fd56ff8d",
+		"name": "EasyTech Portfolio API",
+		"description": "A collection to test the EasyTech Portfolio API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Portfolio Data",
+			"item": [
+				{
+					"name": "Get All Portfolio Data",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/portfolio-data/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"portfolio-data",
+								""
+							]
+						},
+						"description": "Get all portfolio data (About, Projects, Features) in a single request"
+					},
+					"response": []
+				}
+			],
+			"description": "Combined endpoints for fetching multiple data types at once"
+		},
+		{
+			"name": "About",
+			"item": [
+				{
+					"name": "Get About List",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/about/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"about",
+								""
+							]
+						},
+						"description": "Get a list of About information"
+					},
+					"response": []
+				},
+				{
+					"name": "Get About Info (Direct)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/about-info/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"about-info",
+								""
+							]
+						},
+						"description": "Get the single About instance directly"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for About information"
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "Get All Projects",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							]
+						},
+						"description": "Get all projects without any filters"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Projects with Pagination",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/?page=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get paginated projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Projects by Type",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/?type=website",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "website"
+								}
+							]
+						},
+						"description": "Filter projects by type (e.g., website, mobile_app, desktop_app, ecommerce, other)"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Projects",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/?search=portfolio",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "portfolio"
+								}
+							]
+						},
+						"description": "Search projects by title or description"
+					},
+					"response": []
+				},
+				{
+					"name": "Order Projects by Title",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/?ordering=title",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "title"
+								}
+							]
+						},
+						"description": "Order projects by title (ascending)"
+					},
+					"response": []
+				},
+				{
+					"name": "Order Projects by Creation Date (Descending)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/?ordering=-created_at",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "-created_at"
+								}
+							]
+						},
+						"description": "Order projects by creation date (newest first)"
+					},
+					"response": []
+				},
+				{
+					"name": "Combined Query (Type + Search + Order)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/?type=website&search=portfolio&ordering=title",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								""
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "website"
+								},
+								{
+									"key": "search",
+									"value": "portfolio"
+								},
+								{
+									"key": "ordering",
+									"value": "title"
+								}
+							]
+						},
+						"description": "Combined query with filter, search, and ordering"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Project Types",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/project-types/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"project-types",
+								""
+							]
+						},
+						"description": "Get all available project types"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for Projects"
+		},
+		{
+			"name": "Features",
+			"item": [
+				{
+					"name": "Get All Features",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/features/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"features",
+								""
+							]
+						},
+						"description": "Get all features without any filters"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Features",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/features/?search=responsive",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"features",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "responsive"
+								}
+							]
+						},
+						"description": "Search features by title or description"
+					},
+					"response": []
+				},
+				{
+					"name": "Order Features by Title",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/features/?ordering=title",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"features",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "title"
+								}
+							]
+						},
+						"description": "Order features by title (alphabetically)"
+					},
+					"response": []
+				},
+				{
+					"name": "Order Features by Creation Date",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/features/?ordering=created_at",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"features",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "created_at"
+								}
+							]
+						},
+						"description": "Order features by creation date (oldest first)"
+					},
+					"response": []
+				},
+				{
+					"name": "Combined Query (Search + Order)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/features/?search=design&ordering=-created_at",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"features",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "design"
+								},
+								{
+									"key": "ordering",
+									"value": "-created_at"
+								}
+							]
+						},
+						"description": "Combined query with search and ordering"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for Features"
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Get All Clients",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							]
+						},
+						"description": "Get all clients without any filters"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Clients by Rate",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/?rate=5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							],
+							"query": [
+								{
+									"key": "rate",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Filter clients by rating (1-5)"
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Clients by Specialization",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/?specialization=Web Development",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							],
+							"query": [
+								{
+									"key": "specialization",
+									"value": "Web Development"
+								}
+							]
+						},
+						"description": "Filter clients by specialization"
+					},
+					"response": []
+				},
+				{
+					"name": "Search Clients",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/?search=john",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "john"
+								}
+							]
+						},
+						"description": "Search clients by name or specialization"
+					},
+					"response": []
+				},
+				{
+					"name": "Order Clients by Rate (Descending)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/?ordering=-rate",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "-rate"
+								}
+							]
+						},
+						"description": "Order clients by rating (highest first)"
+					},
+					"response": []
+				},
+				{
+					"name": "Order Clients by Name",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/?ordering=name",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "name"
+								}
+							]
+						},
+						"description": "Order clients by name (alphabetically)"
+					},
+					"response": []
+				},
+				{
+					"name": "Combined Query (Rate + Search + Order)",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/?rate=5&search=design&ordering=name",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								""
+							],
+							"query": [
+								{
+									"key": "rate",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": "design"
+								},
+								{
+									"key": "ordering",
+									"value": "name"
+								}
+							]
+						},
+						"description": "Combined query with filter, search, and ordering"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for Clients"
+		}
+	]
+} 
