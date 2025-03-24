@@ -28,7 +28,7 @@ class Project(models.Model):
     
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=255, unique=True, blank=True)
-    description = models.TextField()
+    description = models.TextField(max_length=1000,blank=True, null=True)
     image = models.ImageField(upload_to='projects/')
     preview_link = models.URLField(blank=True, null=True)
     preview_video_link = models.URLField(blank=True, null=True)
@@ -51,8 +51,8 @@ class Project(models.Model):
 
 class Feature(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
-    image = models.ImageField(upload_to='features/')
+    description = models.TextField(max_length=1000,blank=True, null=True)
+    image = models.ImageField(upload_to='features/',blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

@@ -135,6 +135,8 @@ class ClientAdmin(admin.ModelAdmin):
     )
     
     def rate_stars(self, obj):
+        if obj.rate is None:
+            return "Not rated yet"
         stars = '★' * obj.rate + '☆' * (5 - obj.rate)
         return format_html('<span style="color: gold; font-size: 18px;">{}</span>', stars)
     
