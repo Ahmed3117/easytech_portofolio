@@ -68,6 +68,7 @@ class Client(models.Model):
     name = models.CharField(max_length=200)
     phone = models.CharField(max_length=20, blank=True, null=True)
     specialization = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='clients/', blank=True, null=True)
     rate = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)],
         help_text="Rating from 1 to 5"

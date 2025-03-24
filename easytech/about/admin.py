@@ -113,16 +113,20 @@ class FeatureAdmin(admin.ModelAdmin):
     preview_image.short_description = 'Image Preview'
 
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'specialization', 'phone', 'rate_stars', 'created_at')
+    list_display = ('name', 'specialization', 'phone', 'preview_image', 'rate_stars', 'created_at')
     list_filter = ('rate', 'specialization', 'created_at')
     search_fields = ('name', 'specialization', 'phone')
-    readonly_fields = ('created_at', 'updated_at', 'rate_stars')
+    readonly_fields = ('created_at', 'updated_at', 'rate_stars', 'preview_image')
     list_per_page = 25
     save_on_top = True
     date_hierarchy = 'created_at'
     fieldsets = (
         (None, {
             'fields': ('name', 'phone', 'specialization')
+        }),
+        ('Media', {
+            'fields': ('image', 'preview_image'),
+            'description': 'Upload a client image or avatar'
         }),
         ('Rating', {
             'fields': ('rate', 'rate_stars'),
@@ -140,7 +144,13 @@ class ClientAdmin(admin.ModelAdmin):
         stars = '★' * obj.rate + '☆' * (5 - obj.rate)
         return format_html('<span style="color: gold; font-size: 18px;">{}</span>', stars)
     
+    def preview_image(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" width="80" height="auto" style="border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.2);" />', obj.image.url)
+        return "No Image"
+    
     rate_stars.short_description = 'Rating'
+    preview_image.short_description = 'Image Preview'
 
 # Register admin models
 admin.site.register(About, AboutAdmin)

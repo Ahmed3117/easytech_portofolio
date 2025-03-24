@@ -38,7 +38,7 @@ class StatsCountView(APIView):
             'total_clients': client_count,
             'total_projects': project_count,
             'projects_by_type': project_types_stats,
-            'features_count': Feature.objects.count(),
+            
         }
         
         return Response(stats)
