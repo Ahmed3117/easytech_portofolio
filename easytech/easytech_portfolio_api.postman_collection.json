@@ -7,6 +7,36 @@
 	},
 	"item": [
 		{
+			"name": "Stats and Analytics",
+			"item": [
+				{
+					"name": "Get Portfolio Stats Count",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/stats-count/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"stats-count",
+								""
+							]
+						},
+						"description": "Get count statistics for clients, projects, features, and projects grouped by type"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints for statistics and analytics data"
+		},
+		{
 			"name": "All Portfolio Data",
 			"item": [
 				{

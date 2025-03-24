@@ -3,6 +3,7 @@ from rest_framework import generics, status, filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
+from django.db.models import Count
 from .models import About, Project, Feature, Client
 from .serializers import (
     AboutSerializer, ProjectSerializer, 
@@ -10,6 +11,37 @@ from .serializers import (
 )
 
 # Create your views here.
+
+class StatsCountView(APIView):
+    """
+    View to provide count statistics for clients, projects, and projects by type.
+    """
+    def get(self, request, format=None):
+        # Count clients
+        client_count = Client.objects.count()
+        
+        # Count projects
+        project_count = Project.objects.count()
+        
+        # Count projects by type
+        project_types_count = Project.objects.values('type').annotate(count=Count('id'))
+        
+        # Convert to a more readable format
+        project_types_stats = {}
+        for item in project_types_count:
+            # Get the display name for the type
+            type_display = dict(Project.PROJECT_TYPES).get(item['type'], item['type'])
+            project_types_stats[type_display] = item['count']
+            
+        # Combine all stats
+        stats = {
+            'total_clients': client_count,
+            'total_projects': project_count,
+            'projects_by_type': project_types_stats,
+            'features_count': Feature.objects.count(),
+        }
+        
+        return Response(stats)
 
 class PortfolioDataView(APIView):
     """
